@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Homework</title>
+</head>
+<body>
+<!--
+Необязательное задание.
+
+Необходимо от пользователя получить число.
+Необходимо вывести разряды числа, а именно: количество сотен, десятков и единиц.
+
+Пример:
+Пользователь ввел число 163. Программа должна вывести:
+"В числе 163 количество сотен: 1, десятков: 6, единиц: 3"
+
+Пример 2:
+Пользователь ввел число 74. Программа должна вывести:
+"В числе 74 количество сотен: 0, десятков: 7, единиц: 4"
+
+Пример 3:
+Пользователь ввел число 9537. Программа должна вывести:
+"В числе 9537 количество сотен: 5, десятков: 3, единиц: 7"
+
+Уточнение: пользователь всегда вводит корректное положительное целое число.
+-->
+<script>
+  "use strict";
+/* the script requires positive integer value and prints digits of the integer with comments :
+тысяч, сотен, весятков, единиц
+*/
+let myNumber = +prompt(" Пожалста введите число для анализа вот сюда : ");
+let finalString = "В числе  " + myNumber + "  \n количество ";
+let string_1 = "";
+let string_2 = "";
+let string_3 = "";
+
+  string_1 = "  единиц = " + myNumber %10;
+  myNumber = Math.trunc(myNumber /10);
+
+if (myNumber !== 0) {
+  string_2 = " десятков = " + myNumber %10 + ", ";
+  myNumber = Math.trunc(myNumber /10);
+}
+if (myNumber !== 0) {
+  string_3 = " сотен = " + myNumber %10 + ", ";
+  myNumber = Math.trunc(myNumber /10);
+}
+
+finalString = finalString + string_3 + string_2 + string_1; 
+  
+console.log(finalString);
+alert(finalString);
+
+</script>
+</body>
+</html>
