@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Homework</title>
+  </head>
+  <body>
+    <!--
+Обязательное задание.
+
+Необходимо скопировать и вставить в данный скрипт все функции из 4 задания.
+Необходимо реализовать функцию:
+mathOperation(arg1, arg2, operation);
+Параметры:
+arg1 - первое число.
+arg2 - второе число.
+operation - строка, которая содержит один символ из: "+", "-", "*", "/".
+Функция mathOperation должна вернуть результат операции, который был передан в
+параметр operation для двух первых аргументов (arg1 и arg2).
+Функция mathOperation должна использовать для вычисления функции из 4 задания.
+
+Примеры вызова функции:
+console.log(mathOperation(5, 3, "+")); // 8
+console.log(mathOperation(5, 3, ":)")); // NaN
+
+Функции mathOperation всегда передаются корректные числа, проверки на NaN,
+Infinity делать не нужно, однако, в случае если был передан некорректный
+аргумент в параметр operation, необходимо вернуть NaN.
+
+Необходимо для всех функций прописать комментарии jsdoc https://jsdoc.app/.
+-->
+    <script>
+      "use strict";
+
+      /**
+       * The script requests 2 digits and math.sign
+       * and performs math operation under these digits.
+       * @date 2022-11-23
+       */
+
+      const inp1 = inputNumber("a");
+      const inp2 = inputNumber("b");
+      const inpsig = inputSign();
+      alert(`result = ${mathOperation(inp1, inp2, inpsig)}`);
+
+      /**
+       * The function takes 2 numbers and sign, then   calculates result
+       * @date 2022-11-23
+       * @param {number} arg1
+       * @param {number} arg2
+       * @param {string} operation
+       * @returns {number}  returns result of operation or NaN in case of incorrect operator.
+       */
+      function mathOperation(arg1, arg2, operation) {
+        switch (operation) {
+          case "+":
+            return mySum(arg1, arg2);
+          case "-":
+            return myDifference(arg1, arg2);
+          case "*":
+            return myMult(arg1, arg2);
+          case "/":
+            return myDivision(arg1, arg2);
+          default:
+            return NaN;
+        }
+      }
+
+      /**
+       * the function requests to input number and returns it
+       * @date 2022-11-23
+       * @param {string} letter
+       * @returns {number}
+       */
+      function inputNumber(letter) {
+        while (true) {
+          const digit = prompt(` Введите целое число  ${letter}`);
+          if (digit === "" || digit === null || isNaN(Number(digit))) {
+            continue;
+          } else {
+            return Number(digit);
+          }
+        }
+      }
+
+      /**
+       * The function requests sing from set ( + , - , * , / )
+       * check correct input and returns the sign
+       * @date 2022-11-23
+       * @returns {string}  sign
+       */
+      function inputSign() {
+        // while (true) {
+        const sign = prompt(` Ввeдите знак операции ( + , - , * , / ):  `);
+        // const correctSign = /[\+-\*]/gm.test(sign);
+        // const correctSign = /(\+|-|\*|\/)/gm.test(sign);
+        // if (correctSign)
+        return sign;
+        // else continue;
+      }
+
+      /**
+       * The function takes 2 numbers num1 and num2 and returns sum of them
+       * @date 2022-11-23
+       * @param {number} num1
+       * @param {number} num2
+       * @returns {number}  sum
+       */
+      function mySum(num1, num2) {
+        return num1 + num2;
+      }
+
+      /**
+       * The function takes 2 numbers num1 and num2 and returns difference of them
+       * @date 2022-11-23
+       * @param {number} num1
+       * @param {number} num2
+       * @returns {number}  diff
+       */
+      function myDifference(num1, num2) {
+        if (num1 > num2) {
+          return num1 - num2;
+        }
+        return num2 - num1;
+      }
+
+      /**
+       * The function takes 2 numbers num1 and num2 and returns multiplication of them
+       * @date 2022-11-23
+       * @param {number} num1
+       * @param {number} num2
+       * @returns {number}  multiplication
+       */
+      function myMult(num1, num2) {
+        return num2 * num1;
+      }
+
+      /**
+       * The function takes 2 numbers num1 and num2 and returns division of them
+       * @date 2022-11-23
+       * @param {number} num1
+       * @param {number} num2
+       * @returns {number}  division
+       */
+      function myDivision(num1, num2) {
+        if (num2 === 0) {
+          return "Division by 0 ";
+        }
+        return num1 / num2;
+      }
+    </script>
+  </body>
+</html>

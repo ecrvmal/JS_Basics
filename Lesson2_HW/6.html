@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Homework</title>
+  </head>
+  <body>
+    <!--
+Необязательное задание.
+
+Необходимо реализовать функцию, которая будет принимать первым аргументом
+целое положительное число, в следующих трех аргументах функция принимает слова
+в разных склонениях.
+Функция должна возвращать одно из трех переданных в параметры слов подходящее
+под число, которое передано первым аргументом.
+
+Пример:
+console.log(declinationOfNumber(1, "яблоко", "яблока", "яблок")); // "яблоко"
+console.log(declinationOfNumber(2, "мяч", "мяча", "мячей")); // "мяча"
+console.log(declinationOfNumber(5, "стул", "стула", "стульев")); // "стульев"
+
+Функция должна работать с любым словом и любым целым положительным числом.
+Все аргументы, которые будут передаваться функции будут верны.
+-->
+    <script>
+      /**
+       * Функция запрашивает какой предмет склоняем , и количество предметов
+       * Функция выводинт на печать фразу с количеством предметов в правильном склонении.
+       */
+
+      "use strict";
+      const itemNumber = prompt(
+        "Что склоняем?\n 1- Яблоки\n 2- Мячи \n 3- Стулья"
+      );
+      const count = prompt("А сколько предметов? ");
+      const apples = ["яблоко", "яблока", "яблок"];
+      const ball = ["мяч", "мяча", "мячей"];
+      const chair = ["стул", "стула", "стульев"];
+      let arg1 = null;
+      let arg2 = null;
+      let arg3 = null;
+
+      switch (Number(itemNumber)) {
+        case 1: {
+          arg1 = apples[0];
+          arg2 = apples[1];
+          arg3 = apples[2];
+          break;
+        }
+        case 2: {
+          arg1 = ball[0];
+          arg2 = ball[1];
+          arg3 = ball[2];
+          break;
+        }
+        case 3: {
+          arg1 = chair[0];
+          arg2 = chair[1];
+          arg3 = chair[2];
+        }
+      }
+
+      /**
+       * The fnction returns word in correct form, depending of item qty
+       * @date 2022-11-23
+       * @param {number} num
+       * @param {string} form1   form1 of word
+       * @param {string} form2   form2 of word
+       * @param {string} form5   form5 of word
+       * @returns {string}  word in correct form
+       */
+      function declinationOfNumber(num, form1, form2, form5) {
+        const numTail = num % 10;
+        if (5 <= num && num <= 20) return form5;
+        else if (numTail === 1) return form1;
+        else if (2 <= numTail && numTail <= 4) return form2;
+        else return form5;
+      }
+
+      // Число яблок, можно пробовать поставить свое целое, положительное число.
+      // const applesNumber = 5;
+      // Получаем от функции одно из слов "яблоко", "яблока" или "яблок".
+      // const word = declinationOfNumber(
+      //   applesNumber,
+      //   "яблоко",
+      //   "яблока",
+      //   "яблок"
+      // );
+      // Выводим корректную строку, например:
+      // "У меня есть 1 яблоко."
+      // "У меня есть 2 яблока."
+      // "У меня есть 5 яблок."
+      // При любом целом, положительном числе в applesNumber, строка, которая
+      // выводится в console.log, должна иметь правильное склонение слова "яблоко".
+
+      console.log(
+        `У меня есть ${count} ${declinationOfNumber(count, arg1, arg2, arg3)}.`
+      );
+    </script>
+  </body>
+</html>
