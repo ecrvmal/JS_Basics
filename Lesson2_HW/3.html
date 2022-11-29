@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Homework</title>
+  </head>
+  <body>
+    <!--
+Обязательное задание.
+
+Необходимо попросить пользователя ввести два числа в переменные `a` и `b`.
+Необходимо вывести в консоль один результат из следующих проверок:
+1. Если оба числа в переменных `a` и `b` положительные, вывести разность
+чисел `a` и `b`, а именно, вычесть из переменной `a` значение переменной `b`.
+2. Если оба числа в переменных `a` и `b` отрицательные, вывести произведение
+чисел `a` и `b`.
+3. Если числа в переменных `a` и `b` разных знаков, вывести сумму чисел
+`a` и `b`.
+В остальных случаях программа не должна ничего выводить.
+-->
+    <script>
+      /*
+      Функция запрашивает 2 числа и выводит результат в звависимости от знака этих чисел 
+      */
+
+      "use strict";
+
+      const a = inputNumber("a");
+      const b = inputNumber("b");
+      console.log(`result = ${getResult(a, b)}`);
+      alert(`result = ${getResult(a, b)}`);
+
+      /**
+       * the function requests to input number and returns it
+       * @date 2022-11-23
+       * @param {string} letter
+       * @returns {number}
+       */
+      function inputNumber(letter) {
+        while (true) {
+          const digit = prompt(` Введите целое число  ${letter}`);
+          if (digit === "" || digit === null || isNaN(Number(digit))) {
+            continue;
+          } else {
+            return Number(digit);
+          }
+        }
+      }
+
+      /**
+       * The function process 2 digits depending on their sign
+       * @date 2022-11-23
+       * @param {number} num1
+       * @param {number} num2
+       * @returns {number or null}
+       */
+      function getResult(num1, num2) {
+        if (num1 > 0 && num2 > 0) {
+          return num1 - num2;
+        } else if (num1 < 0 && num2 < 0) {
+          return num1 * num2;
+        } else if ((num1 > 0 && num2 < 0) || (num1 < 0 && num2 > 0)) {
+          return num1 + num2;
+        } else {
+          return null;
+        }
+      }
+    </script>
+  </body>
+</html>
