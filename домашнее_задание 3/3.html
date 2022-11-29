@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Homework</title>
+  </head>
+  <body>
+    <!--
+Обязательное задание.
+
+Дан массив products, необходимо цену каждого продукта уменьшить на 15% используя
+метод forEach.
+-->
+    <script>
+      "use strict";
+      /*
+        Скрипт уменьшает цену каждого продукта на 15% используя метод forEach.
+      */
+
+      const products = [
+        {
+          id: 3,
+          price: 200,
+        },
+        {
+          id: 4,
+          price: 900,
+        },
+        {
+          id: 1,
+          price: 1000,
+        },
+      ];
+
+      console.log(`\n Before discount : `);
+      printGoods(products);
+      priceDecrease(products, 15);
+      console.log(`\n After discount : `);
+      printGoods(products);
+
+      /**
+       * The function decrease price of each object in list by 15%
+       * @date 2022-11-29
+       * @param {array} goods
+       * @param {number} discount : percent to discount
+       * @returns the same array with changed price
+       */
+      function priceDecrease(goods, discount) {
+        goods.forEach((el) => (el.price = el.price * (1 - discount / 100)));
+      }
+
+      /**
+       * The function prints id and price properties of objects in array
+       * @date 2022-11-29
+       * @param {array} goods
+
+       * @returns - doesn't returns anything
+       */
+      function printGoods(goods) {
+        goods.forEach((el) =>
+          console.log(`id : ${el.id}   price : ${el.price}`)
+        );
+      }
+    </script>
+  </body>
+</html>
