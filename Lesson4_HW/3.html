@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Homework</title>
+  </head>
+  <body>
+    <!--
+Необязательное задание.
+
+Необходимо создать функцию getDigitsOfNumber, которая принимает целое
+положительное число в диапазоне от 0 до 1000.
+Функция должна вернуть обычный объект с тремя свойствами:
+1. units - содержит число, количество единиц в параметре функции.
+2. dozens - содержит число, количество десятков в параметре функции.
+3. hundreds - содержит число, количество сотен в параметре функции.
+Если функции было передано не целое положительное число, либо число в ином
+диапазоне, нежели задано в условии, функция должна вывести в консоль информацию
+об ошибке и вернуть пустой объект.
+Необходимо также прописать jsdoc для данной функции.
+
+Подсказка:
+У объекта console есть разные методы, мы часто используем console.log для того
+чтобы вывести в консоль какое-то значение, однако есть и другие методы, найдите
+в интернете какие методы существуют и используйте "правильный метод" в нужном
+месте. Обратите внимание что функция не должна выбрасывать ошибку, она должна
+только вывести в консоль информацию о том, что что-то пошло не так.
+Обратите внимание на слова "от 0 до 1000", это означает диапазон [0, 999], что
+можно прочитать как "от нуля до 999 включительно".
+-->
+    <script>
+      "use strict";
+
+      /**
+       * The function createts Object which included inp.number and set
+       * qty of units, dozens and hundreds in the inp,number as a properties
+       * of the Object
+       * @date 2022-12-02
+       * @param {int number} inputValue
+       * @returns {object} The object : (inpValue, Hundreds, dozens, units)
+       *                   or the null if incorrect inputValue
+       */
+      function getDigits(inputValue) {
+        class myObj {
+          constructor(inpValue) {
+            this.inputValue = inpValue;
+            this.hundreds = Math.floor(inpValue / 100);
+            this.dozens = Math.floor((inpValue - this.hundreds * 100) / 10);
+            this.units = inpValue - this.hundreds * 100 - this.dozens * 10;
+          }
+
+          /**
+           * The function prints properties of given Object ;
+           * @date 2022-12-02
+           * @returns: nothing
+           */
+          printObjData() {
+            console.log(` In digit ${this.inputValue} there are : `);
+            console.log(`  ${this.units} units`);
+            console.log(`  ${this.dozens} dozens`);
+            console.log(`  ${this.hundreds} hundreds`);
+          }
+        }
+        if (
+          !isNaN(inputValue) &&
+          !(inputValue % 1) &&
+          inputValue > 0 &&
+          inputValue < 1000
+        ) {
+          const myNewObj = new myObj(inputValue);
+          return myNewObj;
+        } else {
+          console.error("Something is going wrong");
+          return null;
+        }
+      }
+
+      /**
+       * The function requires int number in range 0 ... 999 ,
+       * in case input is incorrect, it repeats the request
+       * @date 2022-12-02
+       * @returns {number} int number
+       */
+      function getNumber() {
+        let fineNumber = false;
+        let num1;
+        while (!fineNumber) {
+          num1 = prompt("Please enter number in range 0 ... 999  : ");
+          if (!isNaN(num1) && !(num1 % 1) && num1 > 0 && num1 < 1000) {
+            fineNumber = true;
+          }
+          // fineNumber = true;         // dummy for debug purposes
+        }
+        return num1;
+      }
+
+      const a = getNumber();
+      // console.log(` a = ${a}`);      // dummy for debug purposes
+      let someObject = getDigits(a);
+      if (someObject !== null) {
+        console.log(someObject);
+        someObject.printObjData();
+      } else {
+        console.log("Something is going wrong ");
+      }
+    </script>
+  </body>
+</html>
