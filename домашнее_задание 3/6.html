@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Homework</title>
+  </head>
+  <body>
+    <!--
+Необязательное задание.
+
+Необходимо вывести горку в консоль (используя цикл for), как показано на
+рисунке, только у вашей горки должно быть 20 рядов, а не 5:
+
+```
+x
+xx
+xxx
+xxxx
+xxxxx
+```
+
+Примечание: в трех косых кавычках ``` показан пример кода для вывода, вам эти
+кавычки выводить не нужно.
+-->
+    <script>
+      "use strict";
+      /*
+       * Скрипт рисует горку из звездочек
+       */
+      let line = "";
+      for (let i = 1; i <= 21; i++) {
+        line = makePrintLine("*", i);
+        console.log(line);
+      }
+
+      /**
+       * Function makes string of number of sumbols
+       * @date 2022-11-29
+       * @param {string} symb  : 1-character string
+       * @param {number} num
+       * @returns {string}  string of symbols
+       */
+      function makePrintLine(symb, num) {
+        let result = "";
+        for (let i = 1; i < num; i++) {
+          result = result + symb;
+        }
+        return result;
+      }
+    </script>
+  </body>
+</html>
