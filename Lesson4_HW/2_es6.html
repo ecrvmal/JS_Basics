@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Homework</title>
+  </head>
+  <body>
+    <!--
+Необязательное задание, но желательно сделать.
+
+Необходимо данное задание выполнить в es5 стиле и в es6 стиле.
+Необходимо создать функцию-конструктор/класс для поста в социальной сети.
+Названия: `PostES5` для es5 стиля и `PostES6` для es6 стиля.
+Пост должен хранить:
+1. Автора поста (имени достаточно).
+2. Текст поста.
+3. Дату и время последнего изменения поста.
+Данные автора поста и текст поста необходимо передавать при создании
+экземпляра объекта.
+Каждому экземпляру объекта должен быть доступен метод `edit`, который будет
+менять текст поста.
+
+---
+
+Необходимо создать функцию-конструктор/класс для закрепленного поста в
+социальной сети.
+Названия: `AttachedPostES5` для es5 стиля и `AttachedPostES6` для es6 стиля.
+Закрепленный пост должен наследоваться от обычного поста.
+Данные автора поста и текст поста необходимо передавать при создании
+экземпляра объекта.
+Закрепленный пост должен иметь свойство `highlighted`, в котором по умолчанию
+будет лежать значение false (это свойство будет обозначать, будет ли наш
+закрепленный пост подсвечен).
+У экземпляров объекта закрепленного поста должен быть метод с названием
+`makeTextHighlighted`, который сделает так, чтобы наш пост стал подсвеченным
+(будет менять свойство `highlighted`).
+
+---
+
+Подсказки:
+1. Задание сложное, советую делать по аналогии с примером на онлайн-занятии.
+2. Обратите внимание что пост хранит "дату и время последнего изменения
+поста", это значит что если пост кто-то изменит (например вызовет какой-то
+метод, который изменит что-то в посте), дата и время последнего изменения
+поста также должна измениться.
+3. Выполняйте все по порядку, не стоит пытаться сделать все сразу, иначе можно
+что-нибудь пропустить.
+4. Если непонятно условие - задайте вопрос.
+-->
+    <script>
+      "use strict";
+      /*
+       * Cоздать функцию-конструктор/класс для поста в социальной сети.
+       * Названия: `PostES6` для es6 стиля . Пост должен хранить:
+       * 1. Автора поста (имени достаточно).
+       * 2. Текст поста.
+       * 3. Дату и время последнего изменения поста.
+       */
+
+      class PostES6 {
+        constructor(author) {
+          this.author = author;
+          this.dateOfPost = new Date();
+          this.text = "";
+        }
+
+        /**
+         * Функция редактирует свойство this.text
+         * @date 2022-12-02
+         * @param {string} text
+         * @returns {object}
+         */
+        edit(text) {
+          this.text = text;
+        }
+
+        /**
+         * Функция печатает данные поста
+         * @date 2022-12-02
+         * @param {any} text
+         * @returns {object}
+         */
+        printPostDetails() {
+          console.log(`Author : ${this.author}`);
+          console.log(`Date : ${this.dateOfPost}`);
+          console.log(`Text : ${this.text}`);
+        }
+      }
+
+      /*Необходимо создать функцию-конструктор/класс для закрепленного поста в
+       * социальной сети.
+       * Названия: `AttachedPostES6` для es6 стиля
+       * Закрепленный пост должен наследоваться от обычного поста.
+       * Данные автора поста и текст поста необходимо передавать при создании
+       * экземпляра объекта.
+       */
+      class AttachedPostES6 extends PostES6 {
+        constructor(author, dateOfPost, text, highlighted) {
+          super(author);
+          this.highlighted = false;
+        }
+
+        /**
+         * функция устанавливает параметр "this.highlighted"
+         * @date 2022-12-02
+         * @param {string} : "on" / "off"
+         * @returns {object}
+         */
+        makeTextHighlighted(highlightSwitch) {
+          switch (highlightSwitch) {
+            case "on":
+              this.highlighted = true;
+              console.log(`TextHighlited : ${highlightSwitch}`);
+              break;
+            case "off":
+              this.highlighted = false;
+              console.log(`TextHighlited : ${highlightSwitch}`);
+              break;
+          }
+        }
+
+        /**
+         * Функция печатает данные закрепленного поста
+         * @date 2022-12-02
+         * @param {any} text
+         * @returns {object}
+         */
+        printPostDetails2() {
+          console.log(`Author : ${this.author}`);
+          console.log(`Date : ${this.dateOfPost}`);
+          console.log(`Text : ${this.text}`);
+          console.log(`highlightSwitch : ${this.highlighted}`);
+        }
+      }
+
+      /**
+       * function prints separatorline
+       * @date 2022-12-02
+       * @returns -
+       */
+      function separatorline() {
+        console.log("\n --------------------------------------\n");
+      }
+
+      separatorline();
+      const myPost6 = new PostES6("Vladimir");
+      myPost6.printPostDetails();
+      separatorline();
+      myPost6.edit("Now here is the text for es6");
+      myPost6.printPostDetails();
+
+      separatorline();
+      const myPost2 = new AttachedPostES6("Alex");
+      myPost2.printPostDetails();
+      separatorline();
+      myPost2.printPostDetails2();
+      separatorline();
+      myPost2.edit("Now here is the text for post 2");
+      myPost2.makeTextHighlighted("on");
+      separatorline();
+      myPost2.printPostDetails2();
+    </script>
+  </body>
+</html>
